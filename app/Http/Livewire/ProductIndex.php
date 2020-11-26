@@ -9,7 +9,6 @@ use Livewire\WithPagination;
 class ProductIndex extends Component
 {
     use WithPagination;
-
     public $search;
 
     protected $updateQueryString = ['search'];

@@ -9,15 +9,31 @@
             </nav>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+            @endif
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-6">
             <h2>{{ $title }}</h2>
+        </div>
+        <div class="col-md-3 text-right">
+            @auth
+            @if (Auth::user()->role == 1)
+            <a href="{{ route('tambah.barang') }}" class="btn btn-primary">Tambah Barang</a>
+            @endif
+            @endauth
         </div>
         <div class="col-md-3">
             <div class="input-group mb-3">
-                <input wire:model="search" type="text" class="form-control" placeholder="Search . . ." aria-label="Search"
-                    aria-describedby="basic-addon1">
+                <input wire:model="search" type="text" class="form-control" placeholder="Search . . ."
+                    aria-label="Search" aria-describedby="basic-addon1">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">
                         <i class="fas fa-search"></i>
@@ -33,7 +49,7 @@
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="{{ url('assets/jersey') }}/{{ $product->gambar }}" class="img-fluid">
+                        <img src="{{ asset('jersey/' . $product->gambar) }}" class="img-fluid">
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <h5><strong>{{ $product->nama }}</strong> </h5>
@@ -42,7 +58,16 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <a href="{{ route('products.detail', $product->id) }}" class="btn btn-dark btn-block"><i class="fas fa-eye"></i> Detail</a>
+                                @guest
+                                <a href="{{ route('products.detail', $product->id) }}" class="btn btn-dark btn-block"><i
+                                        class="fas fa-eye"></i>
+                                    Detail</a>
+                                @else
+                                @if (Auth::user()->role == 1)
+                                <a href="" class="btn btn-warning">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                                @endif
+                                @endguest
                             </div>
                         </div>
                     </div>

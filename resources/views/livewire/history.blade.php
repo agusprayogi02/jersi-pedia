@@ -45,8 +45,8 @@
                             <td>
                                 <?php $pesanan_details = \App\PesananDetail::where('pesanan_id', $pesanan->id)->get(); ?>
                                 @foreach ($pesanan_details as $pesanan_detail)
-                                <img src="{{ url('assets/jersey') }}/{{ $pesanan_detail->product->gambar }}"
-                                    class="img-fluid" width="50">
+                                <img src="{{ asset('jersey/'.$pesanan_detail->product->gambar) }}" class="img-fluid"
+                                    width="50">
                                 {{ $pesanan_detail->product->nama }}
                                 <br>
                                 @endforeach

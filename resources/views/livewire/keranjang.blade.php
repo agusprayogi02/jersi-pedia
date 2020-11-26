@@ -42,17 +42,18 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>
-                                <img src="{{ url('assets/jersey') }}/{{ $pesanan_detail->product->gambar }}" class="img-fluid" width="200">
+                                <img src="{{ asset('jersey/'.$pesanan_detail->product->gambar) }}" class="img-fluid"
+                                    width="200">
                             </td>
                             <td>
                                 {{ $pesanan_detail->product->nama }}
                             </td>
                             <td>
                                 @if($pesanan_detail->namaset)
-                                    Nama : {{ $pesanan_detail->nama }} <br>
-                                    Nomor : {{ $pesanan_detail->nomor }}
-                                @else 
-                                    - 
+                                Nama : {{ $pesanan_detail->nama }} <br>
+                                Nomor : {{ $pesanan_detail->nomor }}
+                                @else
+                                -
                                 @endif
                             </td>
                             <td>{{ $pesanan_detail->jumlah_pesanan }}</td>
@@ -61,13 +62,13 @@
                             <td>
                                 <i wire:click="destroy({{ $pesanan_detail->id }})" class="fas fa-trash text-danger"></i>
                             </td>
-                        </tr>    
+                        </tr>
                         @empty
                         <tr>
                             <td colspan="7">Data Kosong</td>
-                        </tr>   
+                        </tr>
                         @endforelse
-                        
+
                         @if(!empty($pesanan))
                         <tr>
                             <td colspan="6" align="right"><strong>Total Harga : </strong></td>
@@ -81,7 +82,8 @@
                         </tr>
                         <tr>
                             <td colspan="6" align="right"><strong>Total Yang Harus dibayarkan : </strong></td>
-                            <td align="right"><strong>Rp. {{ number_format($pesanan->total_harga+$pesanan->kode_unik) }}</strong> </td>
+                            <td align="right"><strong>Rp.
+                                    {{ number_format($pesanan->total_harga+$pesanan->kode_unik) }}</strong> </td>
                             <td></td>
                         </tr>
                         <tr>

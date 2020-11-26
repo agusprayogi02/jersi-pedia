@@ -34,7 +34,7 @@
          <div class="col-md-3">
             <div class="card">
                <div class="card-body text-center">
-                  <img src="{{ url('assets/jersey') }}/{{ $product->gambar }}" class="img-fluid">
+                  <img src="{{ asset('jersey/'.$product->gambar) }}" class="img-fluid">
                   <div class="row mt-2">
                      <div class="col-md-12">
                         <h5><strong>{{ $product->nama }}</strong> </h5>
