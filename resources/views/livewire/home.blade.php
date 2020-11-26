@@ -10,7 +10,7 @@
       <h3><strong>Pilih Liga</strong></h3>
       <div class="row mt-4">
          @foreach($ligas as $liga)
-         <div class="col">
+         <div class="col-3 my-3">
             <a href="{{ route('products.liga', $liga->id) }}">
                <div class="card shadow">
                   <div class="card-body text-center">
@@ -43,7 +43,8 @@
                   </div>
                   <div class="row mt-2">
                      <div class="col-md-12">
-                        <a href="{{ route('products.detail', $product->id) }}" class="btn btn-dark btn-block"><i class="fas fa-eye"></i> Detail</a>
+                        <a href="{{ route('products.detail', $product->id) }}" class="btn btn-dark btn-block"><i
+                              class="fas fa-eye"></i> Detail</a>
                      </div>
                   </div>
                </div>

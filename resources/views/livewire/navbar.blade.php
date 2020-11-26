@@ -13,7 +13,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ request()->is('/')?'active':'' }}" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -22,23 +22,34 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($ligas as $liga)
-                            <a class="dropdown-item"
+                            <a class="dropdown-item {{ request()->is('products/liga/'.$liga->id)?'active':'' }}"
                                 href="{{ route('products.liga', $liga->id) }}">{{ $liga->nama }}</a>
                             @endforeach
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('products') }}">Semua Liga</a>
                         </div>
                     </li>
+                    @auth
+                    @if (Auth::user()->role === 1)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('history') }}">History</a>
+                        <a class="nav-link {{ request()->is('history')?'active':'' }}"
+                            href="{{ route('history') }}">History</a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('products')?'active':'' }}"
+                            href="{{ route('products') }}">Produk</a>
+                    </li>
+                    @endif
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('keranjang') }}">
+                        <a class="nav-link {{ request()->is('keranjang')?'active':'' }}"
+                            href="{{ route('keranjang') }}">
                             Keranjang <i class="fas fa-shopping-bag"></i>
                             @if($jumlah_pesanan !==0)
                             <span class="badge badge-danger">{{ $jumlah_pesanan }}</span>
@@ -47,11 +58,13 @@
                     </li>
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link {{ request()->is('login')?'active':'' }}"
+                            href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link {{ request()->is('register')?'active':'' }}" href="{{ route('login') }}"
+                            href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else
