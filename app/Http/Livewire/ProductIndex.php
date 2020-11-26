@@ -18,6 +18,14 @@ class ProductIndex extends Component
         $this->resetPage();
     }
 
+    public function delete($id)
+    {
+        $del = Product::where('id', $id)->delete();
+        if ($del) {
+            session()->flash("message", "Berhasil Menghapus Barang!");
+        }
+    }
+
     public function render()
     {
         if ($this->search) {
