@@ -65,7 +65,7 @@ class UpdateBarang extends Component
         ];
         $upp = Product::where("id", $this->kode)->update($data);
         if ($upp) {
-            session()->flash('message', 'Berhasil Menambahkan Barang!');
+            session()->flash('message', 'Berhasil Mengubah Barang!');
             return redirect()->route("products");
         }
     }
