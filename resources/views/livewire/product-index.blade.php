@@ -64,7 +64,8 @@
                                     Detail</a>
                                 @else
                                 @if (Auth::user()->role == 1)
-                                <a href="" class="btn btn-warning mr-3">Edit</a>
+                                <a href="{{ route('update.barang', ['id'=>$product->id]) }}"
+                                    class="btn btn-warning mr-3">Edit</a>
                                 <button wire:click="delete({{ $product->id }})" class="btn btn-danger">Delete</button>
                                 @endif
                                 @endguest
