@@ -4,7 +4,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-dark">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">History</li>
+                    <li class="breadcrumb-item active" aria-current="page">Pesanan</li>
                 </ol>
             </nav>
         </div>
@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <td>No.</td>
+                            <th>Nama</th>
                             <td>Tanggal Pesan</td>
                             <td>Kode Pemesanan</td>
                             <td>Pesanan</td>
@@ -40,6 +41,7 @@
                         @forelse ($pesanans as $pesanan)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td>{{ $pesanan->user->name }}</td>
                             <td>{{ $pesanan->created_at }}</td>
                             <td>{{ $pesanan->kode_pemesanan }}</td>
                             <td>
@@ -69,23 +71,6 @@
 
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-body">
-                    <p>Untuk pembayaran silahkan dapat transfer di rekening dibawah ini : </p>
-                    <div class="media">
-                        <img class="mr-3" src="{{ url('assets/bri.png') }}" alt="Bank BRI" width="60">
-                        <div class="media-body">
-                            <h5 class="mt-0">BANK BRI</h5>
-                            No. Rekening 012345-678-910 atas nama <strong>Siti Nuraini</strong>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

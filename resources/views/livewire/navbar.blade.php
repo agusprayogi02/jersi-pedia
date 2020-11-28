@@ -40,6 +40,10 @@
                         <a class="nav-link {{ request()->is('products')?'active':'' }}"
                             href="{{ route('products') }}">Produk</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('pesanan')?'active':'' }}"
+                            href="{{ route('pesanan') }}">Pesanan</a>
+                    </li>
                     @endif
                     @endauth
                 </ul>
