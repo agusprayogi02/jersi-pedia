@@ -67,6 +67,10 @@
                                 <a href="{{ route('update.barang', ['id'=>$product->id]) }}"
                                     class="btn btn-warning mr-3">Edit</a>
                                 <button wire:click="delete({{ $product->id }})" class="btn btn-danger">Delete</button>
+                                @else
+                                <a href="{{ route('products.detail', $product->id) }}" class="btn btn-dark btn-block"><i
+                                        class="fas fa-eye"></i>
+                                    Detail</a>
                                 @endif
                                 @endguest
                             </div>

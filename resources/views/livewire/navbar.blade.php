@@ -29,8 +29,13 @@
                             <a class="dropdown-item" href="{{ route('products') }}">Semua Liga</a>
                         </div>
                     </li>
-                    @auth
-                    @if (Auth::user()->role === 1)
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('history')?'active':'' }}"
+                            href="{{ route('history') }}">History</a>
+                    </li>
+                    @else
+                    @if (Auth::user()->role != 1)
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('history')?'active':'' }}"
                             href="{{ route('history') }}">History</a>
@@ -45,7 +50,7 @@
                             href="{{ route('pesanan') }}">Pesanan</a>
                     </li>
                     @endif
-                    @endauth
+                    @endguest
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -67,7 +72,7 @@
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('register')?'active':'' }}" href="{{ route('login') }}"
+                        <a class="nav-link {{ request()->is('register')?'active':'' }}"
                             href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                     @endif
