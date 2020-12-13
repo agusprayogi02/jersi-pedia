@@ -23,7 +23,8 @@
     <div class="row mt-4">
         <div class="col">
             <div class="table-responsive">
-                <table class="table text-center">
+                <table wire:poll class="table text-center">
+                    {{ now() }}
                     <thead>
                         <tr>
                             <td>No.</td>
